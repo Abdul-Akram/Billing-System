@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="cart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <center><h1 id="headding">Bill Payment Application</h1>
+    <div class="container">
+    <div ng-app="myapp" ng-controller="BillPay">
+        <table class="table">
+            
+            <tr>
+                <th>Items</th>
+                <th>Quantity</th>
+                <th>Cost</th>
+                <th>Total</th>
+                
+            </tr>
+            <tr><th><hr></th>
+                <th><hr></th>
+                <th><hr></th>
+                <th><hr></th>
+            </tr>
+            <tr ng-repeat="item in cart.items">
+                <td><input type="text" ng-model="item.description"></td>
+                <td><input type="number" ng-model="item.qty" ng-required></td>
+                <td><input type="number" ng-model="item.cost" ng-required></td>
+                <td id="total">{{item.qty * item.cost | currency: 'Rs'}}</td>
+                <th><button id="button1" type="submit"><a id="link1" href ng-click="removeItem($index)">X</a></button></th></tr>
+                
+                
+            <tr>
+                <td><button id="button2" type="submit"><a id="link1" href ng-click="addItem()">Add Item</a></button></td>
+                <td></td>
+                <th>Total:</th>
+                <td>{{total() | currency: 'Rs'}}</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    </center>
+</body>
+
+</html>
